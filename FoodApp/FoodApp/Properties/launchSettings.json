@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "FoodApp": {
+      "commandName": "Project",
+      "remoteDebugEnabled": false
+    }
+  }
+}

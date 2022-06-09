@@ -1,3 +1,5 @@
+using FoodApp.Models;
+using FoodApp.Repositories;
 using FoodApp.ViewModels;
 using FoodApp.Views;
 using Prism;
@@ -19,7 +21,7 @@ namespace FoodApp
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("NavigationPage/MainTabbedPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -27,7 +29,23 @@ namespace FoodApp
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<MainTabbedPage, MainTabbedPageViewModel>();
+            containerRegistry.RegisterForNavigation<FridgeContentPage, FridgeContentPageViewModel>();
+            containerRegistry.RegisterForNavigation<ShoppingListContentPage, ShoppingListContentPageViewModel>();
+
+            containerRegistry.RegisterForNavigation<NewItemPage, NewItemPageViewModel>();
+            containerRegistry.RegisterForNavigation<ItemDetailPage2, ItemDetailPage2ViewModel>();
+            containerRegistry.RegisterForNavigation<EditItemContentPage, EditItemContentPageViewModel>();
+
+            containerRegistry.RegisterSingleton<IItemRepository<Item>, FireBaseItemRepository>();
+            containerRegistry.RegisterSingleton<IItemRepository<Location>, FireBaseItemRepository>();
+
+            containerRegistry.RegisterForNavigation<NewShoppingItemPage, NewShoppingItemPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListItemDetailPage, ListItemDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<EditListItemPage, EditListItemPageViewModel>();
+            containerRegistry.RegisterForNavigation<StorePage, StorePageViewModel>();
+            containerRegistry.RegisterForNavigation<NewStorePage, NewStorePageViewModel>();
+            containerRegistry.RegisterForNavigation<StoreDetailPage, StoreDetailPageViewModel>();
         }
     }
 }
